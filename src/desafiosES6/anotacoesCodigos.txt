@@ -1,0 +1,153 @@
+import {soma} from '../funcoes'
+
+console.log(soma(8,2));
+
+
+
+
+
+
+// class Usuario{
+//     constructor(){
+//         this.email = '',
+//         this.senha = ''
+//     }
+//     add(email, senha){
+//         this.email = email,
+//         this.senha = senha,
+//         this.mostrarDados(  )
+//     }   
+//     isAdmin(){
+//         console.log('Você não é Admin!')
+//         //return false;
+//     }
+//     mostrarDados(){
+//         console.log(this.email);
+//         console.log(this.senha);
+//     }
+// }
+
+// class Admin extends Usuario{
+//     constructor(){
+//         super();
+//         this.admin = true;
+//     }
+
+//     addDados(email, senha){
+//         const user = new Usuario();
+//         user.add(email,senha);
+//     }
+
+//     isAdmin(){
+//         console.log('É administrador');
+//         //return true;
+//     }
+    
+// }
+
+//  const User1 = new Usuario();
+//  const Adm1 = new Admin();
+
+// document.getElementById('button').onclick = function() {
+//     var senhaR = document.getElementById('senha').value;
+//     var emailR = document.getElementById('email').value  ;
+//     var admin = document.getElementById('admin');
+
+//     if(admin.checked){
+//         Adm1.isAdmin();// true        
+//         Adm1.addDados(emailR, senhaR);
+        
+//         User1.mostrarDados();
+//     }else{
+//         User1.isAdmin(); // false
+//         Adm1.addDados(emailR, senhaR);
+//         User1.mostrarDados();
+
+//     }
+
+    
+    
+// };
+// index.html
+  <input  id="email" type="text" />
+    <input  id="senha" type="text" />
+    <input  id="admin" type="checkbox" name="isAdmin" value="isAdmin" />
+    
+    <button id="button"> Adicionar</button>
+
+
+Async e Await
+
+const minhaPromise = () => new Promise((resolve,reject) => {
+//     setTimeout(()=> {resolve('OK')}, 2000)
+// });
+
+// async function executaPromise(){
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+// }
+
+// executaPromise();
+
+
+// Aula de Webpack
+
+import axios from 'axios';
+
+async function getUserFromGithub(user) {
+    try {
+        const response = await axios.get(`https://api.github.com/users/${user}`)
+        console.log(response)
+    } catch (error) {
+        console.log('Usuário não existe');      
+    }
+}   
+
+class Github {
+    static async getRepositories(repo) {
+        try {
+            const result = await axios.get(`https://api.github.com/repos/${repo}`)
+            console.log(result)
+        }
+        catch (error) {
+            console.log('Repositório não existe_')
+        }
+    }
+}
+
+const buscaUsuario = async usuario => {
+    try {
+        const resp = await axios.get(`https://api.github.com/users/${usuario}`);
+        console.log(resp);    
+    } catch (error) {
+        console.log('Busca de Usuario: Usuário não existe');
+    }
+
+}
+
+
+//getUserFromGithub('diego3g');
+//getUserFromGithub('diego3g124123');
+
+//buscaUsuario('diego3g');
+
+Github.getRepositories('rocketseat/rocketseat.com.br');
+// Github.getRepositories('rocketseat/dslkvmskv');
+
+
+//import axios from 'axios'
+
+// class api {
+//     static async getUserInfo(username){
+//         try {
+//             const response = await axios.get(`https://api.github.com/users/${username}`)
+//             console.log(response)
+//         } catch (error) {
+//             console.log("Erro na API")
+//         }
+//     }
+// }
+
+// api.getUserInfo('AbiltonDias');
+// api.getUserInfo('AbiltonDias_');
